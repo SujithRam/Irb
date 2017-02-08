@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>From</th>
+      <th>Application ID</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.msg %></td>
+        <td><%= message.user_id %></td>
+        <td><%= message.irbappid %></td>
+        <td><%= link_to 'Show', message %></td>
+        <td><%= link_to 'Destroy', message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Message', new_message_path %>

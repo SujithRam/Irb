@@ -1,0 +1,53 @@
+<% provide(:title, 'List of Applications') %>
+<div class="row">
+  <div class="col-md-12">
+<br/><h4 style="margin-left: 8px">Applications</h4><br/>
+<div class="table-responsive">
+<%= will_paginate %>
+  <table class="table table-striped">
+  <tr>
+    <th>Proposal No.</th>
+          <th>Project Title</th>
+          <th>Project Type</th>
+    <th>Application Status</th>
+    <% if @user.admin? %>
+    <th>Action</th>
+    <% end %>
+  </tr>
+  <% if @user.admin? %>
+    <% @irbs.each do |i| %>
+    <tr>
+      <td><%= i.proposalno %></td>
+            <td><%= i.titleofproject %></td>
+            <td><%= i.projtype %></td>
+            <% if i.committee_status.eql?('0') %>
+              <td>"Approved by Chair, Awaiting Approval From Committee."</td>
+            <% elsif i.committee_status.eql?('1') %>
+              <td>"Approved by Committee, Application Complete."</td>
+            <% else %>
+              <td>"Awaiting Approval from Chair"</td>
+            <% end %>
+            <td><%= link_to 'Delete', i, method: :delete, data: { confirm: "Are you sure? Action can't be reverted !!"} %></td>
+    </tr>
+    <% end %>
+  <% else %>
+    <% @irbs.each do |i| %>
+    <tr>
+      <td><%= link_to i.proposalno, irb_path(i), {:style=>"color: black; text-decoration: none"} %></td>
+            <td><%= link_to i.titleofproject, irb_path(i) %></td>
+            <td><%= link_to i.projtype, irb_path(i) %></td>
+            <% if i.committee_status.eql?('0') %>
+              <td><%= link_to "Approved by Chair, Awaiting Approval From Committee.", irb_path(i) %></td>
+            <% elsif i.committee_status.eql?('1') %>
+              <td><%= link_to "Approved by Committee, Application Complete.", irb_path(i) %></td>
+            <% else %>
+              <td><%= link_to "Awaiting Approval from Chair", irb_path(i) %></td>
+            <% end %>
+    </tr>
+    <% end %>
+  <% end %>
+</table>
+<%= will_paginate %>
+</div>
+</div>
+</div>

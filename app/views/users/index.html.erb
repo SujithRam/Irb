@@ -1,0 +1,35 @@
+<% provide(:title, 'List of Users') %>
+<div class="row">
+  <div class="col-md-12">
+    <div>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    </div>
+<br/><h4 style="margin-left: 8px">Registered Users</h4><br/>
+<div class="table-responsive">
+<%= will_paginate %>
+  <table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>ULID</th>
+    <th>Admin?</th>
+    <th>Chair?</th>
+    <th>Committee?</th>
+    <th>Action</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.name, user, {:style=>"color: black; text-decoration: none"} %></td>
+      <td><%= link_to user.ulid, user, {:style=>"color: black"} %></td>
+      <td><%= link_to user.admin.eql?(true)? 'Yes' : 'No', user, {:style=>"color: black"} %></td>
+      <td><%= link_to user.faculty.eql?(true)? 'Yes' : 'No', user, {:style=>"color: black"} %></td>
+      <td><%= link_to user.committee.eql?(true)? 'Yes' : 'No', user, {:style=>"color: black"} %></td>
+      <td><%= link_to 'Delete', user, method: :delete, data: { confirm: "Are you sure?"} %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate %>
+</div>
+</div>
+</div>

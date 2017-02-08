@@ -1,0 +1,54 @@
+<% provide(:title, 'Signup') %>
+</br><h1 style="Padding-left: 21px"><b>User Registration</b></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      
+      <div>
+      <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      </div>
+      
+      <%= f.label :name %>
+      <%= f.text_field :name %></br>
+      
+      <%= f.label :ulid, "ULID" %>
+      <%= f.text_field :ulid %></br>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %></br>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %></br>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %></br>
+      
+      <% if logged_in? %>
+          <% if current_user.admin? %>
+              <%= f.label :faculty, 'Is a Chair?' %>
+              <%= f.select :faculty, [['Yes',true],['No',false]] %></br>
+              
+              <%= f.label :committee, 'Is a Committee member?' %>
+              <%= f.select :committee, [['Yes',true],['No',false]] %></br>
+              
+              <%= f.label :admin, 'Is a Admin?' %>
+              <%= f.select :admin, [['Yes',true],['No',false]] %></br>
+          <% else %>
+              <% if current_user.faculty? %>
+                  <%= f.label :faculty, 'Is a Chair?' %>
+                  <%= f.select :faculty, [['Yes',true],['No',false]] %></br>
+              <% elsif current_user.committee? %>
+                  <%= f.label :committee, 'Is a Committee?' %>
+                  <%= f.select :committee, [['Yes',true],['No',false]] %></br>
+              <% end %>
+          <% end %>
+      <% end %>
+      
+      </br></br>
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

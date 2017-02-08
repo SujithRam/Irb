@@ -1,0 +1,196 @@
+<% provide(:title, 'Show_Details') %>
+<div class="row" style="margin: 0 35px 0 0px">
+  <div class="col-md-12">
+    <div>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    </div>
+    <h1></br>Welcome <strong><%= @user.name %></strong></h1><br/>
+    <% if @user.admin.eql?(true) %>
+      <p>Access the details provided in the Header.</p>
+    <% else %>
+    <% if @user.faculty.eql?(true) || @user.committee.eql?(true) %>
+      <% if @user.faculty.eql?(true) %>
+        <p><u>Applications Submitted till now that are not Approved :</u></p>
+      <% else %>
+        <p><u>Applications Submitted till now that are Approved by Chair and are UnRead by the Committee :</u></p>
+      <% end %>
+      <table>
+        <tr>
+          <th>Proposal No.</th>
+          <th>Project Title</th>
+          <th>Project Type</th>
+          <th>Edit/Approve</th>
+          <th>Comment</th>
+        </tr>
+        <% @irbs.each do |i| %>
+          <tr style = "height: 100">
+            <td><%= i.proposalno %></td>
+            <td><%= i.titleofproject %></td>
+            <td><%= i.projtype %></td>
+            <td><%= link_to "Edit/Approve", edit_irb_path(i) %></td>
+            <td><%= link_to "Comment on Proposal", new_message_path(:id => Base64.encode64(i.id.to_s)) %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+    
+      <p><u>Applications Submitted till now :</u></p>
+      <% if @user.irbs.count != 0 %>
+        <table>
+          <col width="170">
+          <col width="250">
+          <col width="200">
+          <col width="300">
+          <tr>
+            <th>Project Title</th>
+            <th>Project Type</th>
+            <th>Comment</th>
+            <th style="padding-left:33px;">Application Status Completion Percentage</th>
+            <th>Application Status Description</th>
+          </tr>
+          <% @irb.each do |i| %>
+            <tr style = "height: 120px">
+              <td><%= link_to i.titleofproject, irb_path(i) %></td>
+              <td><%= link_to i.projtype, irb_path(i) %></td>
+              <td><%= link_to "Reply to Comments", new_message_path(:id => Base64.encode64(i.id.to_s)) %></td>
+              <td>
+              <% if i.faculty_status.eql?('1') && i.committee_status.eql?('0') %>
+                <div id="container1_<%= i.proposalno %>" style="margin: 20px; width: 400px; height: 8px; position: relative;">
+                <script type="text/javascript">
+                  var bar = new ProgressBar.Line(container1_<%= i.proposalno %>, {strokeWidth: 4, easing: 'easeInOut', duration: 1400, color: '#FFEA82', trailColor: '#eee', trailWidth: 1, svgStyle: {width: '100%', height: '100%'},
+                    text: {
+                      style: {
+                        color: '#999',
+                        position: 'absolute',
+                        right: '0',
+                        top: '30px',
+                        padding: 0,
+                        margin: 0,
+                        transform: null
+                      },
+                      autoStyleContainer: false
+                    },
+                    from: {color: '#FF0303'},
+                    to: {color: '#05D508'},
+                    step: (state, bar) => {
+                      bar.setText(Math.round(bar.value() * 100) + ' %');
+                      bar.path.setAttribute('stroke', state.color);
+                    }
+                  });
+                  bar.animate(0.5);  // Number from 0.0 to 1.0
+                </script>
+                </div>
+              <% elsif i.committee_status.eql?('1') %>
+                <div id="container1_<%= i.proposalno %>" style="margin: 20px; width: 400px; height: 8px; position: relative;">
+                <script type="text/javascript">
+                  var bar = new ProgressBar.Line(container1_<%= i.proposalno %>, {strokeWidth: 4, easing: 'easeInOut', duration: 1400, color: '#FFEA82', trailColor: '#eee', trailWidth: 1, svgStyle: {width: '100%', height: '100%'},
+                    text: {
+                      style: {
+                        color: '#999',
+                        position: 'absolute',
+                        right: '0',
+                        top: '30px',
+                        padding: 0,
+                        margin: 0,
+                        transform: null
+                      },
+                      autoStyleContainer: false
+                    },
+                    from: {color: '#FF0303'},
+                    to: {color: '#05D508'},
+                    step: (state, bar) => {
+                      bar.setText(Math.round(bar.value() * 100) + ' %');
+                      bar.path.setAttribute('stroke', state.color);
+                    }
+                  });
+                  bar.animate(1.0);  // Number from 0.0 to 1.0
+                </script>
+                </div>
+              <% else %>
+                <% if i.proposalno.to_s == "Not Yet Assigned" %> 
+                  <div id="container1_1_2" style="margin: 20px; width: 400px; height: 8px; position: relative;">
+                  <script type="text/javascript">
+                  var bar = new ProgressBar.Line(container1_1_2, {strokeWidth: 4, easing: 'easeInOut', duration: 1400, color: '#FFEA82', trailColor: '#eee', trailWidth: 1, svgStyle: {width: '100%', height: '100%'},
+                    text: {
+                      style: {
+                        color: '#999',
+                        position: 'absolute',
+                        right: '0',
+                        top: '30px',
+                        padding: 0,
+                        margin: 0,
+                        transform: null
+                      },
+                      autoStyleContainer: false
+                    },
+                    from: {color: '#FFEA82'},
+                    to: {color: '#ED6A5A'},
+                    step: (state, bar) => {
+                      bar.setText(Math.round(bar.value() * 100) + ' %');
+                      bar.path.setAttribute('stroke', state.color);
+                    }
+                  });
+                  bar.animate(0.0);  // Number from 0.0 to 1.0
+                  </script>
+                  </div>
+                <% else %>
+                  <div id="container1_<%= i.proposalno %>" style="margin: 20px; width: 400px; height: 8px; position: relative;">
+                  <script type="text/javascript">
+                  var bar = new ProgressBar.Line(container1_<%= i.proposalno %>, {strokeWidth: 4, easing: 'easeInOut', duration: 1400, color: '#FFEA82', trailColor: '#eee', trailWidth: 1, svgStyle: {width: '100%', height: '100%'},
+                    text: {
+                      style: {
+                        color: '#999',
+                        position: 'absolute',
+                        right: '0',
+                        top: '30px',
+                        padding: 0,
+                        margin: 0,
+                        transform: null
+                      },
+                      autoStyleContainer: false
+                    },
+                    from: {color: '#FFEA82'},
+                    to: {color: '#ED6A5A'},
+                    step: (state, bar) => {
+                      bar.setText(Math.round(bar.value() * 100) + ' %');
+                      bar.path.setAttribute('stroke', state.color);
+                    }
+                  });
+                  bar.animate(0.1);  // Number from 0.0 to 1.0
+                  </script>
+                  </div>
+                <% end %>
+              <% end %>
+            </td>
+            <td>
+              <% if i.faculty_status.eql?('1') && i.committee_status.eql?('0') %>
+                Faculty Approved your Application and is in review by the Committee
+              <% elsif i.committee_status.eql?('1') %>
+                Congratulations Committee Approved your Application
+              <% else %>
+                <% if i.proposalno.to_s == "Not Yet Assigned" %>
+                  Proposal Number not yet Assignded by the Chair 
+                <% else %>
+                  Application is in review by the Chair
+                <% end %>
+              <% end %>
+            </td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        <i>No Applications submitted till now.<br/><br/></i>
+      <% end %>
+      
+    <% end %>
+    
+    <% end %>
+  </div>
+</div>
+
+
+
+      
+

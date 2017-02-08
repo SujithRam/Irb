@@ -1,0 +1,690 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+<%= form_for(@irb) do |f| %>
+<% if @user.faculty.eql?(true) %>
+</br><%= f.label :proposalno, "Proposal Number" %>
+<%= f.text_field :proposalno, class: 'form-control' %>
+<% end %>
+</br>
+<p style="text-align: center;"><span style="font-size:20px;"><strong>The University of Louisiana Lafayette Institutional Review Board</strong></span></p>
+
+<p style="text-align: center;"><span style="font-size:18px;"><strong>APPLICATION INSTRUCTIONS AND CHECKLIST</strong>&nbsp;</span></p>
+
+<p><strong>Application Instructions:&nbsp;</strong>All applications for IRB review are to be completed electronically using this form. Electronic files should be emailed to the IRB Chair at irb@louisiana.edu. &nbsp; Note: Graduate Students must have their professor&rsquo;s &ldquo;signature&rdquo; prior to forwarding to the IRB chair.</p>
+
+<p>&nbsp; &nbsp;</p>
+
+<table>
+  <tr>
+    <th>Completed / Not Applicable</th>
+    <th>Explanation</th>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status1' %>
+      <% if @irb.status['1'] == 'Completed' %>
+      <%= radio_button_tag 'status[1]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[1]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[1]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[1]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Application Form:&nbsp;</strong>Answer questions 1 through 9 in theprovided gray text box and check boxes. Do not reference pages in the proposal for requested information. Be sure to &ldquo;sign&rdquo; and date the first page.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status2' %>
+      <% if @irb.status['2'] == 'Completed' %>
+      <%= radio_button_tag 'status[2]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[2]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[2]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[2]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Attach Research Proposal:&nbsp;</strong>Graduate students may use the &quot;Methods&quot;&nbsp;section of their thesis/dissertation (if available) in lieu of a research proposal.&nbsp;A proposal is a document explaining the purpose and procedures to be used in&nbsp;the study.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status3' %>
+      <% if @irb.status['3'] == 'Completed' %>
+      <%= radio_button_tag 'status[3]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[3]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[3]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[3]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Attach Consent Forms:</strong> Examples of consent forms are available at http://vpresearch.louisiana.edu/node/432. They must include…
+  1) Researchers’ names and UL Lafayette emails and telephone numbers 
+  2) I.R.B. Chair’s name and UL Lafayette email and telephone number 
+  3) A statement indicating that questions concerning protection of human subjects in research can be addressed to the UL Lafayette IRB Chair.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status4' %>
+      <% if @irb.status['4'] == 'Completed' %>
+      <%= radio_button_tag 'status[4]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[4]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[4]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[4]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Attach Testing Instruments:</strong>questionnaires, tests, interview questions, other data collection instruments or a detailed description of data collection procedures.  If a data collection tool exists only as a computer program, videotape, audio tape etc., a full and complete description of the tool is needed.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status5' %>
+      <% if @irb.status['5'] == 'Completed' %>
+      <%= radio_button_tag 'status[5]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[5]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[5]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[5]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Attach Flyers, and/or Advertisements for Subjects:</strong>announcements, posters or advertisements that will be used to recruit participants to the research project.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status6' %>
+      <% if @irb.status['6'] == 'Completed' %>
+      <%= radio_button_tag 'status[6]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[6]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[6]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[6]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Attach Educational Certificates:</strong>The NIH provided training “Responsibilities of Researchers to Protect Human Subjects” is acceptable.  See http://phrp.nihtraining.com/users/login.php</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status7' %>
+      <% if @irb.status['7'] == 'Completed' %>
+      <%= radio_button_tag 'status[7]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[7]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[7]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[7]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Students:</strong>Attach a Signed Letter from your major professor or committee chair stating that he/she has reviewed and approves the proposed project.</p></td>
+  </tr>
+  <tr>
+    <td>
+      <% f.label 'status8' %>
+      <% if @irb.status['8'] == 'Completed' %>
+      <%= radio_button_tag 'status[8]', 'Completed', :checked => true %><br/>
+      <%= radio_button_tag 'status[8]', 'Not Applicable' %>
+      <% else %>
+      <%= radio_button_tag 'status[8]', 'Completed' %><br/>
+      <%= radio_button_tag 'status[8]', 'Not Applicable',:checked => true %>
+      <% end %>
+    </td>
+    <td><strong>Graduate Students applying for approval of a thesis or dissertation project:</strong>the application must be “signed” by your professor and emailed to the IRB chair.</p></td>
+  </tr>
+</table>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;"><span style="font-size:18px;"><strong>APPLICATION FOR REVIEW OF RESEARCH INVOLVING HUMAN SUBJECTS</strong></span></p>
+
+<p>&nbsp;</p>
+
+<table>
+	<tbody>
+		<tr>
+			<th>&nbsp;</th>
+			<th>RESPONSIBLE FACULTY OR STAFF SUPERVISOR / INVESTIGATOR</th>
+			<th>NAME OF INVESTIGATOR(S)</th>
+		</tr>
+		<tr>
+			<td>NAME</td>
+			<td><%= text_field_tag 'responsibility[nameoffac]', @irb.responsibility['nameoffac'], class: "form-control" %></td>
+			<td><%= text_field_tag 'responsibility[nameofinv]', @irb.responsibility['nameofinv'] ,class: "form-control"%></td>
+		</tr>
+		<tr>
+			<td>DEPARTMENT</td>
+			<td><%= text_field_tag 'responsibility[deptoffac]', @irb.responsibility['deptoffac'], class: "form-control" %></td>
+			<td><%= text_field_tag 'responsibility[deptofinv]', @irb.responsibility['deptofinv'], class: "form-control" %></td>
+		</tr>
+		<tr>
+			<td>CAMPUS ADDRESS</td>
+			<td><%= text_field_tag 'responsibility[addoffac]', @irb.responsibility['addoffac'], class: "form-control" %></td>
+			<td><%= text_field_tag 'responsibility[addofinv]', @irb.responsibility['addofinv'], class: "form-control" %></td>
+		</tr>
+		<tr>
+			<td>PHONE</td>
+			<td><%= text_field_tag 'responsibility[phoneoffac]', @irb.responsibility['phoneoffac'], class: "form-control" %></td>
+			<td><%= text_field_tag 'responsibility[phoneofinv]', @irb.responsibility['phoneofinv'], class: "form-control" %></td>
+		</tr>
+		<tr>
+			<td>EMAIL</td>
+			<td><%= text_field_tag 'responsibility[emailoffac]', @irb.responsibility['emailoffac'], class: "form-control" %></td>
+			<td><%= text_field_tag 'responsibility[emailofinv]', @irb.responsibility['emailofinv'], class: "form-control" %></td>
+		</tr>
+	</tbody>
+</table>
+<p><br />
+<strong>This application is for a:</strong><br />
+<!-- <input name="a1" type="checkbox" value="thesis" />Thesis<br />
+<input name="a2" type="checkbox" value="dissertation" />Dissertation<br />
+<input name="a3" type="checkbox" value="researchproject" />Research Project<br />
+<input name="a4" type="checkbox" value="otherproject" />Other Project &nbsp; &nbsp; &nbsp; -->
+
+<table>
+  <col width="10">
+  <col width="250">
+  <col width="80">
+  <col width="100">
+  <tr>
+    <td><%= f.radio_button :apptype, 'Thesis'%></td>
+    <td><%= f.label 'apptype', 'Thesis' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :apptype, 'Dissertation' %></td>
+    <td><%= f.label 'apptype', 'Dissertation' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :apptype, 'Research Project' %></td>
+    <td><%= f.label 'apptype', 'Research Project' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :apptype, 'Other Project' %></td>
+    <td><%= f.label 'apptype', 'Other Project' %></td>
+    <td><%= f.label :apptype, "Other Project Type" %></td>
+    <td><%= f.text_field :otherapptype, class: 'form-control' %></td>
+  </tr>
+</table>
+
+<!-- Type:&nbsp;<input name="typeofproject" type="text" />&nbsp;&nbsp;</p> -->
+
+
+
+<b><%= f.label :titleofproject, "TITLE OF PROPOSAL/PROJECT:" %></b>
+<%= f.text_field :titleofproject, class: 'form-control' %>
+<br/>
+
+<p><em>In making this application, I certify that I have read and understood the guidelines and procedures developed by The University of Louisiana at Lafayette for the protection of human subjects and that I will comply with both the letter and the spirit of the university&#39;s policies. &nbsp;I further acknowledge my responsibility to report any significant changes in the protocol involving human subjects and to obtain written approval from the Institutional Review Board for these changes prior to making these changes. &nbsp;I understand that IRB approval extends for one year, and if the project continues beyond the date of approval, then I will notify the IRB and request a renewal.</em><br/></p>
+
+<% if @irb.acc1.to_s.empty? %>
+<%= check_box_tag 'acc1', 'Accepted' %>
+<% else %>
+<%= check_box_tag 'acc1', 'Accepted', :checked => true %>
+<% end %>
+<%= label_tag(:acc1, "By checking this box, The student signed the form.") %>
+<p>Signed by: <b><%= @irb.student_name %></b></p>
+<%= f.text_field :date1, :placeholder => 'dd/mm/yyyy', :disabled => true %>
+
+<br />
+
+<% if @user.faculty? || @user.committee? %>
+<p><em>I certify that as faculty advisor I have read and approve of the research described in this application and will provide guidance and support to the student as needed.</em></p>
+
+<% if @irb.acc2.to_s.empty? %>
+<%= check_box_tag 'acc2', 'Certified' %>
+<% else %>
+<%= check_box_tag 'acc2', 'Certified', :checked => true %>
+<% end %>
+<%= label_tag(:acc2, "By checking this box, The Chair Approved the Application.") %> 
+<p>Signed by: <b><%= @irb.faculty_name %></b></p>
+<%= f.text_field :date2, :placeholder => 'dd/mm/yyyy', :value => Time.now.strftime("%m/%d/%Y") %>
+
+<% end %>
+
+<br />
+
+<% if @user.committee? %>
+<p><em>This proposal has been reviewed and approved by The University of Louisiana Lafayette Institutional Review Board for compliance with the Code of Federal Regulations 45 CFR 46, Protection of Human Subjects and as amended.<br /></em></p>
+<!-- <input name="acc3" type="checkbox" value="irbchairname" /></em>By checking this box, I, <mark>type IRB Chair name</mark>, am hereby signing my name.-->
+
+<% if @irb.acc3.to_s.empty? %>
+<%= check_box_tag 'acc3', 'Approved' %>
+<% else %>
+<%= check_box_tag 'acc3', 'Approved', :checked => true %>
+<% end %>
+<%= label_tag(:acc3, "By checking this box, The Committee Approved the Application.") %>
+<p>Signed by: <b><%= @irb.committee_name %></b></p>
+<%= f.text_field :date3, :placeholder => 'dd/mm/yyyy', :value => Time.now.strftime("%m/%d/%Y") %>
+
+<% end %>
+
+<br />
+<br />
+<strong>1. IS THIS A :</strong><br />
+
+<table>
+    <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :projtype, 'New Project'%></td>
+    <td><%= f.label 'projtype_new_project', 'New Project' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :projtype, 'Renewal'%></td>
+    <td><%= f.label 'projtype_renewel', 'Renewel' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :projtype, 'Change in Procedure for a Continuing Project'%></td>
+    <td><%= f.label 'projtype_change_in_procedure_for_a_continuing_project', 'Change in Procedure for a Continuing Project' %></td>
+  </tr>
+</table>
+
+<p><strong>2. FUNDING :<br />
+<!--<input name="fun1" type="checkbox" value="external" />Externally Funded &nbsp; &nbsp;-->
+
+<table>
+  <tr>
+    <td><%= f.radio_button :fund, 'Externally Funded'%></td>
+    <td><%= f.label 'fund_external', 'Externally Funded' %></td>
+    <td>
+      <%= f.label :fundingdetails, "FUNDING AGENCY:" %>
+      <%= f.text_field :fundingdetails, class: 'form-control' %>
+    </td>
+  </tr>
+  <tr>
+     <td><%= f.radio_button :fund, 'Internally Funded'%></td>
+    <td><%= f.label 'fund_internal', 'Internally Funded' %></td>
+    <td>
+      <%= f.label :fundingdetails, "FUNDING SOURCE:" %>
+      <%= f.text_field :fundingdetails, class: 'form-control' %>
+    </td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :fund, 'No internal funds or external funds are requested', :checked => true %></td>
+    <td><%= f.label 'fund_no_funds', 'No internal funds or external funds are requested' %></td>
+  </tr>
+
+</table>
+
+<p><strong>3. DATE TO BEGIN DATA COLLECTION :</strong><br/>
+<%= f.text_field :datetobegindc, :placeholder => 'dd/mm/yyyy' %></p>
+
+<p><strong>4. STATUS OF PRINCIPAL INVESTIGATOR :<br />
+<!--<input name="sopi1" type="checkbox" value="faculty" />Faculty<br />-->
+<table>
+   <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :statusofprininv, 'Faculty'%></td>
+    <td><%= f.label 'statusofinv', 'Faculty' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :statusofprininv, 'Staff'%></td>
+    <td><%= f.label 'statusofinv', 'Staff' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :statusofprininv, 'Graduate Student'%></td>
+    <td><%= f.label 'statusofinv', 'Graduate Student' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :statusofprininv, 'Undergraduate Student'%></td>
+    <td><%= f.label 'statusofinv', 'Undergraduate Student' %></td>
+  </tr>
+</table>
+
+(Students, be sure to include the required letter from your supervising professor--see checklist.)</p>
+
+
+<p><strong>5. TYPE OF REVIEW :<br />
+<!--<input name="tor1" type="checkbox" value="exempt" />Exempt<br />-->
+
+
+<table>
+   <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :typeofreview, 'Exempt'%></td>
+    <td><%= f.label 'typeofrev', 'Exempt' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :typeofreview, 'Expedited'%></td>
+    <td><%= f.label 'typeofrev', 'Expedited' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :typeofreview, 'Full'%></td>
+    <td><%= f.label 'typeofrev', 'Full' %></td>
+  </tr>
+  <tr>
+    <td><%= f.radio_button :typeofreview, 'Uncertain'%></td>
+    <td><%= f.label 'typeofrev', 'Uncertain' %></td>
+  </tr>
+</table>
+
+<!--RATIONALE</strong> (See Guidelines, pgs. 4, 9 -11):&nbsp;<input name="rationale" type="text" /></p>-->
+<%= f.label :rationale, "RATIONALE (See Guidelines, pgs. 4, 9 -11):" %>
+<%= f.text_field :rationale, class: 'form-control' %><br/>
+
+<p align="justify"><strong>6. ABSTRACT :&nbsp;</strong>Summarize the research in abstract form; include the purpose(s) of the study, hypotheses/research questions, sampling procedure, subjects, data collection tools/procedures, and interventions/treatments as appropriate. &nbsp;The abstract can be identical or similar to the summary required when submitting to the funding source. &nbsp;Briefly outline, in particular, what will be done to research subjects.<br />
+<!--<textarea name="abstract"></textarea></p>-->
+
+<%#= f.label :abstract, "6. ABSTRACT: Summarize the research in abstract form; include the purpose(s) of the study, hypotheses/research questions, sampling procedure, subjects, data collection tools/procedures, and interventions/treatments as appropriate. The abstract can be identical or similar to the summary required when submitting to the funding source. Briefly outline, in particular, what will be done to research subjects." %>
+<%= f.text_area :abstract, class: 'form-control', size: "30x10" %>
+
+<p><strong>7. SUBJECT POPULATION :&nbsp;</strong>Please check all of the following, either &quot;yes&quot; or &quot;no&quot;.<br />
+a.&nbsp;Will any of the following be primary subjects (subjects selected specifically for their status indicated below):<br />
+
+
+
+
+
+<table>
+	<tbody>
+	  <tr>
+			<th>&nbsp;</th>
+			<th>Yes/No</th>
+		</tr>
+		<tr>
+			<td>Minors:</td>
+			<td>
+			  <% f.label 'poputype1' %>
+			  <% if @irb.poputype['minors'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[minors]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[minors]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[minors]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[minors]', 'No', :checked => true %>
+			  <% end %>
+			</td>
+		</tr>
+		<tr>
+			<td>Institutionalized Persons:</td>
+			<td>
+			  <% f.label 'poputype2' %>
+			  <% if @irb.poputype['instipersons'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[instipersons]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[instipersons]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[instipersons]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[instipersons]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Pregnant Women:</td>
+			<td>
+			  <% f.label 'poputype3' %>
+			  <% if @irb.poputype['pregnantwomen'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[pregnantwomen]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[pregnantwomen]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[pregnantwomen]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[pregnantwomen]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Women of Childbearing Age:</td>
+			<td>
+			  <% f.label 'poputype4' %>
+			  <% if @irb.poputype['womenofca'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[womenofca]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[womenofca]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[womenofca]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[womenofca]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>ULLafayette Students:</td>
+			<td>
+			  <% f.label 'poputype5' %>
+			  <% if @irb.poputype['ulstudents'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[ulstudents]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[ulstudents]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[ulstudents]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[ulstudents]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>University Students-Non-U.L. Lafayette Students:</td>
+			<td>
+			  <% f.label 'poputype6' %>
+			  <% if @irb.poputype['nonulstudents'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[nonulstudents]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[nonulstudents]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[nonulstudents]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[nonulstudents]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Minorities:</td>
+			<td>
+			  <% f.label 'poputype7' %>
+			  <% if @irb.poputype['minorities'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[minorities]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[minorities]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[minorities]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[minorities]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Low Income Persons:</td>
+			<td>
+			  <% f.label 'poputype8' %>
+			  <% if @irb.poputype['lowincomepersons'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[lowincomepersons]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[lowincomepersons]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[lowincomepersons]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[lowincomepersons]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Physically Disabled:</td>
+			<td>
+			  <% f.label 'poputype9' %>
+			  <% if @irb.poputype['physicallydisabled'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[physicallydisabled]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[physicallydisabled]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[physicallydisabled]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[physicallydisabled]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+		<tr>
+			<td>Emotionally Disabled, Incompetent, or Those with Diminished Capacity:</td>
+			<td>
+			  <% f.label 'poputype10' %>
+			  <% if @irb.poputype['emodis'] == 'Yes' %>
+			  <%= radio_button_tag 'poputype[emodis]', 'Yes', :checked => true%></br>
+			  <%= radio_button_tag 'poputype[emodis]', 'No'%>
+			  <% else %>
+			  <%= radio_button_tag 'poputype[emodis]', 'Yes' %></br>
+			  <%= radio_button_tag 'poputype[emodis]', 'No', :checked => true %>
+			  <% end %>
+			 </td>
+		</tr>
+	</tbody>
+</table>
+
+
+
+<p>b. &nbsp;Number of subjects, including controls:&nbsp;</p>
+<%#= f.label :noofsub, "b. Number of subjects, including controls:" %>
+<%= f.text_field :noofsub, class: 'form-control' %></br>
+
+
+<p>c. &nbsp;Are you associated with the subjects (e.g., your students, employees, subordinates, or patients)?<br />
+
+<table>
+  <tbody>
+    <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :assowithsub, 'Yes'%></td>
+    <td><%= f.label 'assowiths', 'Yes' %></td>
+  </tr>
+  <tr>  
+    <td><%= f.radio_button :assowithsub, 'No'%></td>
+    <td><%= f.label 'assowiths', 'No' %></td>
+  </tr>
+  </tbody>
+</table>
+
+<!--If yes, explain the nature of the association.<br />
+<textarea name="natureofassociation"></textarea></p>-->
+<%= f.label :natureofassociation, "If yes, explain the nature of the association." %>
+<%= f.text_field :natureofassociation, class: 'form-control' %><br/>
+
+<p>d. &nbsp;How will subjects be contacted and selected?
+<%#= f.label :subjectselection, "d. How will subjects be contacted and selected?" %>
+<%= f.text_area :subjectselection, class: 'form-control' %></p>
+
+
+<p>e. &nbsp;Will research subjects be compensated?<br />
+
+<table>
+  <tbody>
+     <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :ressubcomp, 'Yes'%></td>
+    <td><%= f.label 'ressubc', 'Yes' %></td>
+  </tr>
+  <tr>  
+    <td><%= f.radio_button :ressubcomp, 'No'%></td>
+    <td><%= f.label 'ressubc', 'No' %></td>
+  </tr>
+  </tbody>
+</table>
+
+If yes, all information concerning payment, including the amount and schedule of payment, must be set forth in the informed consent form &nbsp; (see Question #8).</p>
+
+
+<p>f.&nbsp;Will you be advertising for research participants?<br />
+
+<table>
+  <tbody>
+     <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :adforresparti, 'Yes'%></td>
+    <td><%= f.label 'adforrp', 'Yes' %></td>
+  </tr>
+  <tr>  
+    <td><%= f.radio_button :adforresparti, 'No'%></td>
+    <td><%= f.label 'adforrp', 'No' %></td>
+  </tr>
+  </tbody>
+</table>
+
+If yes, attach a copy of the advertisement you will use. &nbsp;(See Guidelines, pg 5)</p>
+
+<p>g. &nbsp;Describe your procedures and safeguards for insuring confidentiality or anonymity of the research subjects. &nbsp;(See Guidelines, pgs. 5 and 6) &nbsp;Include how data will be secured, reported, and when identifiable raw data will be destroyed.<br />
+<%#= f.label :confidentiality, "g. Describe your procedures and safeguards for insuring confidentiality or anonymity of the research subjects. (See Guidelines, pgs. 5 and 6) Include how data will be secured, reported, and when identifiable raw data will be destroyed." %>
+<%= f.text_area :confidentiality, class: 'form-control' %>
+
+
+<p><b>8.&nbsp;</b><strong>VOLUNTARY PARTICIPATION/INFORMED CONSENT:</strong> &nbsp;(See Guidelines, &nbsp;pgs. 6-8)<br />
+
+
+<table>
+  <tbody>
+     <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :voluntaryparticipation, 'Consent form will be used and is attached. Procedures are described below.'%></td>
+    <td><%= f.label 'volparti', 'Consent form will be used and is attached. Procedures are described below.' %></td>
+  </tr>
+  <tr>  
+    <td><%= f.radio_button :voluntaryparticipation, 'Consent form will not be used. Procedures are described below.'%></td>
+    <td><%= f.label 'volparti', 'Consent form will not be used. Procedures are described below.' %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+<p><!--Describe how and where informed consent will be obtained.<br />
+<textarea name="howwhereconsent"></textarea>--></p>
+<%= f.label :howwhereconsent, "Describe how and where informed consent will be obtained." %>
+<%= f.text_area :howwhereconsent, class: 'form-control' %>
+
+
+<p><!--Describe your method or procedures for assuring that subject participation is voluntary.<br />
+<textarea name="methodproceduresubjectparti"></textarea></p>-->
+<%= f.label :methodproceduresubjectparti, "Describe your method or procedures for assuring that subject participation is voluntary." %>
+<%= f.text_area :methodproceduresubjectparti, class: 'form-control' %>
+
+<p><!--<strong>If subjects are children</strong> and they are capable of assent, <strong>describe (or indicate N/A)</strong> provisions or provide copies of protocols for soliciting their assent as well as provisions for soliciting permission of their parent(s) or authorized representative.<br />
+<textarea name="childrenpermission"></textarea></p>-->
+<%= f.label :childrenpermission, "If subjects are children and they are capable of assent, describe (or indicate N/A) provisions or provide copies of protocols for soliciting their assent as well as provisions for soliciting permission of their parent(s) or authorized representative." %>
+<%= f.text_area :childrenpermission, class: 'form-control' %>
+
+
+<p><!--If any information is withheld from subjects, identify and justify the withholding and <u>describe debriefing plan</u>, if any.<br />
+<textarea name="infowithheld"></textarea></p>-->
+<%= f.label :infowithheld, "If any information is withheld from subjects, identify and justify the withholding and describe debriefing plan, if any." %>
+<%= f.text_area :infowithheld, class: 'form-control' %>
+
+<p><b>9.&nbsp;</b><strong>RISK:</strong> What level of risk will the subjects be placed? &nbsp;(See Guidelines, pgs 8, 9 and 11)<br />
+ 
+
+<table>
+  <tbody>
+     <col width="10">
+    <col width="350">
+  <tr>
+    <td><%= f.radio_button :risk, 'Minimal'%></td>
+    <td><%= f.label 'rsk', 'Minimal' %></td>
+  </tr>
+  <tr>  
+    <td><%= f.radio_button :risk, 'More than minimal'%></td>
+    <td><%= f.label 'rsk', 'More than minimal' %></td>
+  </tr>
+    <tr>  
+    <td><%= f.radio_button :risk, 'Uncertain'%></td>
+    <td><%= f.label 'rsk', 'Uncertain' %></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+<!--<strong>RISK/BENEFIT RATIO:</strong> &nbsp;Describe and assess any potential risks (physical, psychological, social, legal, economic or other) and assess the likelihood and seriousness of such risks. &nbsp;The concept of &quot;risk&quot; includes risks to the subject&#39;s dignity and self respect. &nbsp;<u>Justify the risks by assessing the potential benefits</u> to be gained by the individual subjects, as well as benefits which may accrue to society in general as a result of the planned work. Please be very specific. Abstract statements may not be comprehended by all participants in research.<br />
+<textarea name="riskbenefitratio"></textarea></p>-->
+<%= f.label :riskbenefitratio, "RISK/BENEFIT RATIO: Describe and assess any potential risks (physical, psychological, social, legal, economic or other) and assess the likelihood and seriousness of such risks. The concept of risk includes risks to the subject's dignity and self respect. Justify the risks by assessing the potential benefits to be gained by the individual subjects, as well as benefits which may accrue to society in general as a result of the planned work. Please be very specific. Abstract statements may not be comprehended by all participants in research." %>
+<%= f.text_area :riskbenefitratio, class: 'form-control' %>
+
+<p><!--Describe in detail your procedures for protecting against or minimizing potential risks and an assessment of the likely effectiveness of these procedures.<br />
+<textarea name="minimizingrisk"></textarea></p>-->
+<%= f.label :minimizingrisk, "Describe in detail your procedures for protecting against or minimizing potential risks and an assessment of the likely effectiveness of these procedures." %>
+<%= f.text_area :minimizingrisk, class: 'form-control' %>
+
+
+<p>&nbsp;</p>
+
+<%= f.submit "UPDATE DETAILS", class: "btn btn-primary" %>
+<p><strong><br/>Remember to include all items on the check list.</strong></p>
+
+<p>&nbsp;</p>
+
+<p><span style="font-size:12px;">Form Revised 10/27/2000 EMW:&nbsp;<br />
+Approved U.L.Lafayette IRB 10/27/00<br />
+Revised EMW 2004<br />
+Approved U.L. Lafayette I.R.B. 2004<br />
+Revised EMW I.R.B. 2008<br />
+Approved U.L. I.R.B. 2008<br />
+Revised 3-13-09 EMWills<br />
+Approved:UL Lafayette IRB 2009<br />
+Revised: 08-16-2010<br />
+Revised: 09-22-2011<br />
+Revised: 09-12-2013<br />
+Revised: 06-15-2015<br />
+Revised: 10-13-2015</span><br />
+&nbsp;</p>
+<% end %>
+</div>
+</div>

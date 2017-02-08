@@ -1,0 +1,41 @@
+<header id="header">
+	<h1><b style="color: white">University of Louisiana</b> at Lafayette</h1>
+	<nav id="nav">
+		<% if logged_in? %>
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Dashboard", user_path(current_user) %></li>
+			<% if current_user.admin? || current_user.faculty? || current_user.committee? %>
+			<li><%= link_to "New User", new_user_path %></li>
+			<% if current_user.admin? %>
+			<li><%= link_to "Index of Users", users_path %></li>
+			<% end %>
+			<li><%= link_to "Index of Applications", irbs_path %></li>
+			<% end %>
+			<% unless current_user.admin? || current_user.faculty? || current_user.committee? %>
+			<li>
+				<a href="#" class="icon fa-angle-down">IRB Details</a>
+				<ul>
+					<li><%= link_to "Do I need IRB?", needirb_path %></li>
+					<li><%= link_to "New IRB Form", new_irb_path %></li>
+				</ul>
+			</li>
+			<% end %>
+			<li><%= link_to "Logout", logout_path, :method => :delete, :class => "button" %></li>
+		</ul>
+		
+		<% else %>
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li>
+				<a href="#" class="icon fa-angle-down">IRB Details</a>
+				<ul>
+					
+					<li><%= link_to "Do I need IRB?", needirb_path %></li>
+				</ul>
+			</li>
+			<li><%= link_to "Log in", login_path, { :class => "button" } %></li>
+		</ul>
+		<% end %>
+	</nav>
+</header>				

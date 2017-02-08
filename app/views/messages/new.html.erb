@@ -1,0 +1,54 @@
+<br/><h4 style="margin: 0 0 0 22px">Comments till now:</h4>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <% if @user.faculty? || @user.committee? %>
+
+      <% if @messages.empty? %>
+        <p><i><strong>No Comments made till now!</strong></i></p>
+        <%= render 'form', message: @message, status: false %>
+      <% else %>
+        <% @messages.each do |message| %>
+          <% if @user.id.to_s == message.user_id.to_s && message.receiverid.to_s == @dat.user_id.to_s %>
+            <p><b>YOU :</b>  <%= message.msg %></p>
+          <% elsif @user.id.to_s == message.receiverid.to_s && message.user_id.to_s == @dat.user_id.to_s %>
+            <p style="text-align: right"><b>STUDENT :</b> <%= message.msg %></p>
+          <% end %>
+        <% end %>
+        <%= render 'form', message: @message, status: false %>
+      <% end %>
+      
+    <% else %> <!-- Student -->
+
+      <% if @messages.empty? %>
+        <p><i><strong>No Comments made till now!</strong></i></p>
+      <% else %>
+        <% @app.each do |msg| %>      <!-- Contains list of user ids who sent the messages including the student-->
+          <% if msg != @user.id %>    <!--Iterate through all the userids one by one, If the userid picked is not the current user id then proceed-->
+              
+              <!--Next 9 lines is just for display correct word "Comments from **" purpose --> 
+              <% @users.each do |usr| %>    <!--Get the list of all the users from the database-->
+                <% if msg.to_s == usr.id.to_s %>    <!--If the userid form @app list matches one of the user in the total users list in db, retrieve all his details-->
+                    <% if usr.faculty? %>       <!--Check whether he is a faculty or a committee memeber-->
+                    <p> Comments from Chair Person : <b>Dr. <%= usr.name %></b></p>
+                    <% else %>
+                    <p> Comments from Committee Person : <b>Dr. <%= usr.name %></b></p>
+                    <% end %>
+                <% end %>
+              <% end %>
+
+            <% @messages.each do |message| %>   <!--As we picked one userid retrieve all the messages that are sent and recieved between the current_user and the iterating user-->
+              <% if @user.id.to_s == message.user_id.to_s && message.receiverid.to_s == msg.to_s %>
+                <p><b>YOU :</b>  <%= message.msg %></p>
+              <% elsif @user.id.to_s == message.receiverid.to_s && message.user_id.to_s == msg.to_s %>
+                <p style="text-align: right"><b>CHAIR :</b> <%= message.msg %></p>
+              <% end %>
+            <% end %>
+
+            <%= render 'form', message: @message, userid: msg.to_s %>
+          <% end %>
+        <% end %>
+      <% end %>
+      
+    <% end %>
+  </div>
+</div>

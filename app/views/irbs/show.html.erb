@@ -1,0 +1,393 @@
+<div class="row">
+<div class="col-md-8 col-md-offset-2">
+<%= form_for(@irb) do |f| %>
+<!-- Should only be visible and filled by committee -->
+</br><%= f.label :proposalno, "Proposal Number" %>
+<%= f.text_field :proposalno, class: 'form-control', :disabled => true %>
+</br>
+<p style="text-align: center;"><span style="font-size:20px;"><strong>The University of Louisiana Lafayette Institutional Review Board</strong></span></p>
+
+<p style="text-align: center;"><span style="font-size:18px;"><strong>APPLICATION INSTRUCTIONS AND CHECKLIST</strong>&nbsp;</span></p>
+
+<p><strong>Application Instructions:&nbsp;</strong>All applications for IRB review are to be completed electronically using this form. Electronic files should be emailed to the IRB Chair at irb@louisiana.edu. &nbsp; Note: Graduate Students must have their professor&rsquo;s &ldquo;signature&rdquo; prior to forwarding to the IRB chair.</p>
+
+<p>&nbsp; &nbsp;</p>
+
+<table>
+<tr>
+  <th>Completed / Not Applicable</th>
+  <th>Explanation</th>
+</tr>
+<tr>
+  <td><%= label_tag @irb.status['1'] %></td>
+  <td><strong>Application Form:&nbsp;</strong>Answer questions 1 through 9 in theprovided gray text box and check boxes. Do not reference pages in the proposal for requested information. Be sure to &ldquo;sign&rdquo; and date the first page.</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['2'] %>
+  </td>
+  <td><strong>Attach Research Proposal:&nbsp;</strong>Graduate students may use the &quot;Methods&quot;&nbsp;section of their thesis/dissertation (if available) in lieu of a research proposal.&nbsp;A proposal is a document explaining the purpose and procedures to be used in&nbsp;the study.</p></td>
+</tr>
+<tr>
+  <td>
+   <%= label_tag @irb.status['3'] %>
+  </td>
+  <td><strong>Attach Consent Forms:</strong> Examples of consent forms are available at http://vpresearch.louisiana.edu/node/432. They must include…
+1) Researchers’ names and UL Lafayette emails and telephone numbers 
+2) I.R.B. Chair’s name and UL Lafayette email and telephone number 
+3) A statement indicating that questions concerning protection of human subjects in research can be addressed to the UL Lafayette IRB Chair.</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['4'] %>
+  </td>
+  <td><strong>Attach Testing Instruments:</strong>questionnaires, tests, interview questions, other data collection instruments or a detailed description of data collection procedures.  If a data collection tool exists only as a computer program, videotape, audio tape etc., a full and complete description of the tool is needed.</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['5'] %>
+  </td>
+  <td><strong>Attach Flyers, and/or Advertisements for Subjects:</strong>announcements, posters or advertisements that will be used to recruit participants to the research project.</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['6'] %>
+  </td>
+  <td><strong>Attach Educational Certificates:</strong>The NIH provided training “Responsibilities of Researchers to Protect Human Subjects” is acceptable.  See http://phrp.nihtraining.com/users/login.php</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['7'] %>
+  </td>
+  <td><strong>Students:</strong>Attach a Signed Letter from your major professor or committee chair stating that he/she has reviewed and approves the proposed project.</p></td>
+</tr>
+<tr>
+  <td>
+    <%= label_tag @irb.status['8'] %>
+  </td>
+  <td><strong>Graduate Students applying for approval of a thesis or dissertation project:</strong>the application must be “signed” by your professor and emailed to the IRB chair.</p></td>
+</tr>
+</table>
+
+<p style="text-align: center;">&nbsp;</p>
+
+<p style="text-align: center;"><span style="font-size:18px;"><strong>APPLICATION FOR REVIEW OF RESEARCH INVOLVING HUMAN SUBJECTS</strong></span></p>
+
+<p>&nbsp;</p>
+
+<table>
+<tbody>
+  <tr>
+    <th>&nbsp;</th>
+    <th>RESPONSIBLE FACULTY OR STAFF SUPERVISOR / INVESTIGATOR</th>
+    <th>NAME OF INVESTIGATOR(S)</th>
+  </tr>
+  <tr>
+    <td>NAME</td>
+    <td><%= text_field_tag 'responsibility[nameoffac]', @irb.responsibility['nameoffac'], class: "form-control", :disabled => true %></td>
+    <td><%= text_field_tag 'responsibility[nameofinv]', @irb.responsibility['nameofinv'] ,class: "form-control", :disabled => true%></td>
+  </tr>
+  <tr>
+    <td>DEPARTMENT</td>
+    <td><%= text_field_tag 'responsibility[deptoffac]', @irb.responsibility['deptoffac'], class: "form-control", :disabled => true %></td>
+    <td><%= text_field_tag 'responsibility[deptofinv]', @irb.responsibility['deptofinv'], class: "form-control", :disabled => true %></td>
+  </tr>
+  <tr>
+    <td>CAMPUS ADDRESS</td>
+    <td><%= text_field_tag 'responsibility[addoffac]', @irb.responsibility['addoffac'], class: "form-control", :disabled => true %></td>
+    <td><%= text_field_tag 'responsibility[addofinv]', @irb.responsibility['addofinv'], class: "form-control", :disabled => true %></td>
+  </tr>
+  <tr>
+    <td>PHONE</td>
+    <td><%= text_field_tag 'responsibility[phoneoffac]', @irb.responsibility['phoneoffac'], class: "form-control", :disabled => true %></td>
+    <td><%= text_field_tag 'responsibility[phoneofinv]', @irb.responsibility['phoneofinv'], class: "form-control", :disabled => true %></td>
+  </tr>
+  <tr>
+    <td>EMAIL</td>
+    <td><%= text_field_tag 'responsibility[emailoffac]', @irb.responsibility['emailoffac'], class: "form-control", :disabled => true %></td>
+    <td><%= text_field_tag 'responsibility[emailofinv]', @irb.responsibility['emailofinv'], class: "form-control", :disabled => true %></td>
+  </tr>
+</tbody>
+</table>
+
+<p><br />
+
+<%= label_tag 'apptype', "This application is for a:" %>
+<%= label_tag 'appltype', @irb.apptype, class: "boldstat" %>
+
+<b><%= label_tag 'titleofproject', "TITLE OF PROPOSAL/PROJECT:" %></b>
+<%= label_tag 'titleoftheproject', @irb.titleofproject, class: "boldstat" %>
+<br/>
+
+<p><em>In making this application, I certify that I have read and understood the guidelines and procedures developed by The University of Louisiana at Lafayette for the protection of human subjects and that I will comply with both the letter and the spirit of the university&#39;s policies. &nbsp;I further acknowledge my responsibility to report any significant changes in the protocol involving human subjects and to obtain written approval from the Institutional Review Board for these changes prior to making these changes. &nbsp;I understand that IRB approval extends for one year, and if the project continues beyond the date of approval, then I will notify the IRB and request a renewal.</em><br />
+<br />
+<!-- <input name="acc1" type="checkbox" value="studentname" />By checking this box, I, <mark>type researcher/student name</mark>, am hereby signing my name.-->
+
+
+<% if @irb.acc1.to_s.empty? %>
+<%= check_box_tag 'acc1', 'Accepted' %>
+<% else %>
+<%= check_box_tag 'acc1', 'Accepted', :checked => true %>
+<% end %>
+<%= label_tag(:acc1, "By checking this box, The student signed his/her name.") %>
+<p>Signed by: <b><%= @irb.student_name %></b></p>
+
+<!-- Date:<input name="date1" type="date" /><br /> -->
+
+<%= f.text_field :date1, :placeholder => 'dd/mm/yyyy' %>
+
+<br />
+
+<p><em>I certify that as faculty advisor I have read and approve of the research described in this application and will provide guidance and support to the student as needed.</em></p>
+
+<p><!-- <input name="acc2" type="checkbox" value="sponsorname" />By checking this box, I, <mark>type faculty sponsor name</mark>, am hereby signing my name.-->
+
+<% if @irb.acc2.to_s.empty? %>
+<%= check_box_tag 'acc2', 'Certified' %>
+<% else %>
+<%= check_box_tag 'acc2', 'Certified', :checked => true %>
+<% end %>
+<%= label_tag(:acc2, "By checking this box, The Chair signed his/her name.") %> 
+<p>Signed by: <b><%= @irb.faculty_name %></b></p>
+
+
+<!-- Date:<input name="date2" type="date" /> -->
+
+<%= f.text_field :date2, :placeholder => 'dd/mm/yyyy' %>
+</p>
+
+<br/>
+<br />
+<p><em>This proposal has been reviewed and approved by The University of Louisiana Lafayette Institutional Review Board for compliance with the Code of Federal Regulations 45 CFR 46, Protection of Human Subjects and as amended.<br /></p>
+<!-- <input name="acc3" type="checkbox" value="irbchairname" /></em>By checking this box, I, <mark>type IRB Chair name</mark>, am hereby signing my name.-->
+
+<% if @irb.acc3.to_s.empty? %>
+<%= check_box_tag 'acc3', 'Approved' %>
+<% else %>
+<%= check_box_tag 'acc3', 'Approved', :checked => true %>
+<% end %>
+<%= label_tag(:acc3, "By checking this box, The committee signed his/her name.") %>
+<p>Signed by: <b><%= @irb.committee_name %></b></p>
+<%= f.text_field :date3, :placeholder => 'dd/mm/yyyy',  :disabled => true %>
+<br />
+<br />
+
+<%= label_tag 'projtype', "1. TYPE OF PROJECT:" %>
+<%= label_tag 'projecttype', @irb.projtype, class: "boldstat" %>
+
+
+
+<%= label_tag 'fund', "2. FUNDING:" %>
+<%= label_tag 'fundtype', @irb.fund, class: "boldstat" %>
+
+<% if !@irb.fundingdetails.blank? %>
+
+<%= label_tag 'fundingdetails', "FUNDING AGENCY/SOURCE:" %>
+<%= label_tag 'fundingd', @irb.fundingdetails, class: "boldstat" %>
+<% end %>
+
+
+
+<p>3. DATE TO BEGIN DATA COLLECTION :<br/>
+<%= f.text_field :datetobegindc, :placeholder => 'dd/mm/yyyy', :disabled => true %></p>
+
+
+
+<%= label_tag 'statusofprininv', "4. STATUS OF PRINCIPAL INVESTIGATOR :" %>
+<%= label_tag 'sopinv', @irb.statusofprininv, class: "boldstat" %>
+
+
+<%= label_tag 'typeofreview', "5. TYPE OF REVIEW :" %>
+<%= label_tag 'typeofrev', @irb.typeofreview, class: "boldstat" %>
+
+
+
+<!--RATIONALE</strong> (See Guidelines, pgs. 4, 9 -11):&nbsp;<input name="rationale" type="text" /></p>-->
+<%= f.label :rationale, "RATIONALE (See Guidelines, pgs. 4, 9 -11):" %>
+<%= f.text_field :rationale, class: 'form-control', :disabled => true %><br/>
+
+<p align="justify"><strong>6. ABSTRACT :&nbsp;</strong>Summarize the research in abstract form; include the purpose(s) of the study, hypotheses/research questions, sampling procedure, subjects, data collection tools/procedures, and interventions/treatments as appropriate. &nbsp;The abstract can be identical or similar to the summary required when submitting to the funding source. &nbsp;Briefly outline, in particular, what will be done to research subjects.<br />
+<%= f.text_area :abstract, class: 'form-control', size: "30x10", :disabled => true %>
+
+<p><strong>7. SUBJECT POPULATION :&nbsp;</strong><br />
+a.&nbsp;Will any of the following be primary subjects (subjects selected specifically for their status indicated below):<br />
+
+
+<table>
+<tbody>
+  <tr>
+    <th>&nbsp;</th>
+    <th>Yes / No</th>
+  </tr>
+  <tr>
+    <td>Minors:</td>
+    <td>
+      <%= label_tag @irb.poputype['minors'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Institutionalized Persons:</td>
+    <td>
+      <%= label_tag @irb.poputype['instipersons'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Pregnant Women:</td>
+    <td>
+      <%= label_tag @irb.poputype['pregnantwomen'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Women of Childbearing Age:</td>
+    <td>
+      <%= label_tag @irb.poputype['womenofca'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>ULLafayette Students:</td>
+    <td>
+      <%= label_tag @irb.poputype['ulstudents'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>University Students-Non-U.L. Lafayette Students:</td>
+    <td>
+      <%= label_tag @irb.poputype['nonulstudents'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Minorities:</td>
+    <td>
+      <%= label_tag @irb.poputype['minorities'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Low Income Persons:</td>
+    <td>
+      <%= label_tag @irb.poputype['lowincomepersons'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Physically Disabled:</td>
+    <td>
+      <%= label_tag @irb.poputype['physicallydisabled'] %>
+    </td>
+  </tr>
+  <tr>
+    <td>Emotionally Disabled, Incompetent, or Those with Diminished Capacity:</td>
+    <td>
+      <%= label_tag @irb.poputype['emodis'] %>
+    </td>
+  </tr>
+</tbody>
+</table>
+
+
+
+<p>b. &nbsp;Number of subjects, including controls:&nbsp;</p>
+<%= f.text_field :noofsub, class: 'form-control', :disabled => true %></br>
+
+
+<%= label_tag 'assowithsub', "c. Are you associated with the subjects (e.g., your students, employees, subordinates, or patients)?" %>
+<%= label_tag 'assowiths', @irb.assowithsub, class: "boldstat" %>
+
+<% if @irb.assowithsub == 'Yes' %>
+
+<%= f.label :natureofassociation, "If yes, explain the nature of the association." %>
+<%= f.text_field :natureofassociation, class: 'form-control', :disabled => true %><br/>
+<% end %>
+
+<p>d. &nbsp;How will subjects be contacted and selected?
+<%#= f.label :subjectselection, "d. How will subjects be contacted and selected?" %>
+<%= f.text_area :subjectselection, class: 'form-control', :disabled => true %></p>
+
+
+<%= label_tag 'ressubcomp', "e. Will research subjects be compensated?" %>
+<%= label_tag 'ressubc', @irb.ressubcomp, class: "boldstat" %>
+
+
+
+If yes, all information concerning payment, including the amount and schedule of payment, must be set forth in the informed consent form &nbsp; (see Question #8).</p>
+
+
+<%= label_tag 'adforresparti', "f. Will you be advertising for research participants?" %>
+<%= label_tag 'adforrp', @irb.adforresparti, class: "boldstat" %>
+
+
+
+If yes, attach a copy of the advertisement you will use. &nbsp;(See Guidelines, pg 5)</p>
+
+<p>g. &nbsp;Describe your procedures and safeguards for insuring confidentiality or anonymity of the research subjects. &nbsp;(See Guidelines, pgs. 5 and 6) &nbsp;Include how data will be secured, reported, and when identifiable raw data will be destroyed.<br />
+<%#= f.label :confidentiality, "g. Describe your procedures and safeguards for insuring confidentiality or anonymity of the research subjects. (See Guidelines, pgs. 5 and 6) Include how data will be secured, reported, and when identifiable raw data will be destroyed." %>
+<%= f.text_area :confidentiality, class: 'form-control', :disabled => true %>
+
+
+<%= label_tag 'voluntaryparticipation', "8. VOLUNTARY PARTICIPATION/INFORMED CONSENT: (See Guidelines, &nbsp;pgs. 6-8)" %>
+<%= label_tag 'volparti', @irb.voluntaryparticipation, class: "boldstat" %>
+
+
+
+
+<p><!--Describe how and where informed consent will be obtained.<br />
+<textarea name="howwhereconsent"></textarea>--></p>
+<%= f.label :howwhereconsent, "Describe how and where informed consent will be obtained." %>
+<%= f.text_area :howwhereconsent, class: 'form-control', :disabled => true %>
+
+
+<p><!--Describe your method or procedures for assuring that subject participation is voluntary.<br />
+<textarea name="methodproceduresubjectparti"></textarea></p>-->
+<%= f.label :methodproceduresubjectparti, "Describe your method or procedures for assuring that subject participation is voluntary." %>
+<%= f.text_area :methodproceduresubjectparti, class: 'form-control', :disabled => true %>
+
+<p><!--<strong>If subjects are children</strong> and they are capable of assent, <strong>describe (or indicate N/A)</strong> provisions or provide copies of protocols for soliciting their assent as well as provisions for soliciting permission of their parent(s) or authorized representative.<br />
+<textarea name="childrenpermission"></textarea></p>-->
+<%= f.label :childrenpermission, "If subjects are children and they are capable of assent, describe (or indicate N/A) provisions or provide copies of protocols for soliciting their assent as well as provisions for soliciting permission of their parent(s) or authorized representative." %>
+<%= f.text_area :childrenpermission, class: 'form-control', :disabled => true %>
+
+
+<p><!--If any information is withheld from subjects, identify and justify the withholding and <u>describe debriefing plan</u>, if any.<br />
+<textarea name="infowithheld"></textarea></p>-->
+<%= f.label :infowithheld, "If any information is withheld from subjects, identify and justify the withholding and describe debriefing plan, if any." %>
+<%= f.text_area :infowithheld, class: 'form-control', :disabled => true %>
+
+
+
+<%= label_tag 'risk', "9. RISK: What level of risk will the subjects be placed? (See Guidelines, pgs 8, 9 and 11)" %>
+<%= label_tag 'rsk', @irb.risk, class: "boldstat" %>
+
+
+
+
+<!--<strong>RISK/BENEFIT RATIO:</strong> &nbsp;Describe and assess any potential risks (physical, psychological, social, legal, economic or other) and assess the likelihood and seriousness of such risks. &nbsp;The concept of &quot;risk&quot; includes risks to the subject&#39;s dignity and self respect. &nbsp;<u>Justify the risks by assessing the potential benefits</u> to be gained by the individual subjects, as well as benefits which may accrue to society in general as a result of the planned work. Please be very specific. Abstract statements may not be comprehended by all participants in research.<br />
+<textarea name="riskbenefitratio"></textarea></p>-->
+<%= f.label :riskbenefitratio, "RISK/BENEFIT RATIO: Describe and assess any potential risks (physical, psychological, social, legal, economic or other) and assess the likelihood and seriousness of such risks. The concept of risk includes risks to the subject's dignity and self respect. Justify the risks by assessing the potential benefits to be gained by the individual subjects, as well as benefits which may accrue to society in general as a result of the planned work. Please be very specific. Abstract statements may not be comprehended by all participants in research." %>
+<%= f.text_area :riskbenefitratio, class: 'form-control', :disabled => true  %>
+
+<p><!--Describe in detail your procedures for protecting against or minimizing potential risks and an assessment of the likely effectiveness of these procedures.<br />
+<textarea name="minimizingrisk"></textarea></p>-->
+<%= f.label :minimizingrisk, "Describe in detail your procedures for protecting against or minimizing potential risks and an assessment of the likely effectiveness of these procedures." %>
+<%= f.text_area :minimizingrisk, class: 'form-control', :disabled => true  %>
+
+
+<p>&nbsp;</p>
+<p><strong><br/>Remember to include all items on the check list.</strong></p>
+
+<p>&nbsp;</p>
+<%= link_to "Update Details", edit_irb_path(params[:id]) %> 
+<p><span style="font-size:12px;">Form Revised 10/27/2000 EMW:&nbsp;<br />
+Approved U.L.Lafayette IRB 10/27/00<br />
+Revised EMW 2004<br />
+Approved U.L. Lafayette I.R.B. 2004<br />
+Revised EMW I.R.B. 2008<br />
+Approved U.L. I.R.B. 2008<br />
+Revised 3-13-09 EMWills<br />
+Approved:UL Lafayette IRB 2009<br />
+Revised: 08-16-2010<br />
+Revised: 09-22-2011<br />
+Revised: 09-12-2013<br />
+Revised: 06-15-2015<br />
+Revised: 10-13-2015</span><br />
+&nbsp;</p>
+<% end %>
+</div>
+</div>
